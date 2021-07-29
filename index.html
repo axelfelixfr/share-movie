@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
+  <link rel="icon" type="favicon/x-icon" href="img/favicon/film.svg" />
+  <!-- Tailwind CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <title>Share Movie</title>
+</head>
+
+<body class="leading-normal tracking-normal text-white gradient">
+  <!-- Navbar -->
+  <nav id="header" class="fixed top-0 z-30 w-full text-white">
+    <div class="container flex flex-wrap items-center justify-between w-full py-2 mx-auto mt-0">
+      <div class="flex items-center pl-4">
+        <a class="text-2xl font-bold text-white no-underline volver-arriba toggleColour hover:no-underline lg:text-4xl"
+          href="#">
+          <span class="font-normal"><i class="inline h-8 fill-current fas fa-film"></i> Share</span> Movie
+        </a>
+      </div>
+      <div class="block pr-4 lg:hidden">
+        <button id="nav-toggle"
+          class="flex items-center p-1 transition duration-300 ease-in-out transform hover:text-gray-900 focus:outline-none focus:shadow-outline hover:scale-105">
+          <div class="menu-icon">
+            <span class="bg-white line-1 toggleMenu"></span>
+            <span class="bg-white line-2 toggleMenu"></span>
+            <span class="bg-white line-3 toggleMenu"></span>
+          </div>
+        </button>
+      </div>
+      <div
+        class="z-20 flex-grow hidden w-full p-4 mt-2 text-black bg-white lg:flex lg:items-center lg:w-auto lg:mt-0 lg:bg-transparent lg:p-0"
+        id="nav-content">
+
+        <ul class="items-center justify-end flex-1 lg:flex">
+          <li id="itemNosotros" class="mr-3">
+            <a class="inline-block px-4 py-2 font-bold text-gray-800 no-underline scroll-suave hover:text-red-300 hover:text-underline"
+              href="#nosotros">Nosotros</a>
+          </li>
+          <li id="itemProcedimiento" class="mr-3">
+            <a class="inline-block px-4 py-2 font-bold text-gray-800 no-underline scroll-suave hover:text-red-300 hover:text-underline"
+              href="#procedimiento">Procedimiento</a>
+          </li>
+          <li id="itemPlanes" class="mr-3">
+            <a class="inline-block px-4 py-2 font-bold text-gray-800 no-underline scroll-suave hover:text-red-300 hover:text-underline"
+              href="#planes">Planes</a>
+          </li>
+          <li id="itemPromociones" class="mr-3">
+            <a class="inline-block px-4 py-2 font-bold text-gray-800 no-underline scroll-suave hover:text-red-300 hover:text-underline"
+              href="#promociones">Promociones</a>
+          </li>
+        </ul>
+        <div id="botonesLogin">
+          <button id="navAction" class="button-outline-danger" onclick="abrirModal()">
+            Entrar
+          </button>
+        </div>
+        <div id="navLogin" class="pl-5"></div>
+        <div
+          class="fixed inset-0 z-50 w-full overflow-hidden flex-items-center modalEffect h-100 animated fadeIn faster"
+          style="background: rgba(0,0,0,.7);">
+          <!-- Modal -->
+          <div
+            class="z-50 w-11/12 mx-auto overflow-y-auto bg-white border border-teal-500 rounded shadow-lg modal-container md:max-w-md">
+            <div class="px-6 py-4 text-left modal-content">
+
+              <div class="flex items-center justify-between pb-3">
+                <p class="text-2xl font-bold"><i class="text-red-500 fas fa-user-alt"></i> Login</p>
+                <div class="z-50 cursor-pointer cerrarModal">
+                  <svg class="text-black fill-current" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                    viewBox="0 0 18 18">
+                    <path
+                      d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                    </path>
+                  </svg>
+                </div>
+              </div>
+              <div class="w-full p-5 bg-white rounded-lg lg:rounded-l-none">
+                <form id="formLogin" class="mb-4 bg-white rounded">
+                  <div class="box-material-design">
+                    <input id="email" type="email" name="email" class="input-material-design" />
+                    <label for="email" class="label-material-design">
+                      Correo electrónico
+                    </label>
+                  </div>
+                  <div class="mb-4">
+                    <div class="box-material-design">
+                      <input id="password" type="password" name="password" class="input-material-design" />
+                      <label for="password" class="label-material-design">
+                        Contraseña
+                      </label>
+                    </div>
+                  </div>
+                  <div class="mb-6 text-center">
+                    <button id="loginButton" class="px-4 py-2 mr-5 button-outline-primary cerrarModal" type="submit">
+                      Entrar <i class="pl-2 far fa-thumbs-up"></i>
+                    </button>
+                    <button class="px-4 py-2 cerrarModal button-outline-danger" type="button">
+                      Salir <i class="pl-2 fas fa-door-closed"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <hr class="py-0 my-0 border-b border-gray-100 opacity-25" />
+  </nav>
+  <div class="pt-24">
+    <div class="container flex flex-col flex-wrap items-center px-3 mx-auto md:flex-row">
+      <div class="flex flex-col items-start justify-center w-full text-center md:w-2/5 md:text-left">
+        <p class="w-full uppercase tracking-loose">¿Aburrido(a) al no encontrar buen contenido?</p>
+        <h1 class="w-full my-4 text-5xl font-bold leading-tight text-center lg:text-left">
+          ¡Es tu día de suerte!
+        </h1>
+        <p id="lemaMovie" class="hidden mb-8 text-2xl leading-normal lg:block">
+          Puedes suscribirte a <i class="inline fas fa-film"></i> Share <span class="font-bold">Movie</span> y matar el
+          aburrimiento con nuestro contenido
+        </p>
+        <span class="w-full text-center lg:text-left" id="botonesInicio">
+          <a href="#planes" class="mx-auto button-primary">Quiero suscribirme <i class="pl-2 far fa-heart"></i></a>
+        </span>
+      </div>
+      <div class="w-full py-6 text-center md:w-3/5">
+        <img class="z-50 w-full md:w-4/5" src="img/principal/undraw_home_cinema_l7yl.svg" />
+      </div>
+    </div>
+  </div>
+  <div class="relative -mt-12 lg:-mt-24">
+    <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
+          <path
+            d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496"
+            opacity="0.100000001"></path>
+          <path
+            d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z"
+            opacity="0.100000001"></path>
+          <path
+            d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z"
+            id="Path-4" opacity="0.200000003"></path>
+        </g>
+        <g transform="translate(-4.000000, 76.000000)" fill="#FFFFFF" fill-rule="nonzero">
+          <path
+            d="M0.457,34.035 C57.086,53.198 98.208,65.809 123.822,71.865 C181.454,85.495 234.295,90.29 272.033,93.459 C311.355,96.759 396.635,95.801 461.025,91.663 C486.76,90.01 518.727,86.372 556.926,80.752 C595.747,74.596 622.372,70.008 636.799,66.991 C663.913,61.324 712.501,49.503 727.605,46.128 C780.47,34.317 818.839,22.532 856.324,15.904 C922.689,4.169 955.676,2.522 1011.185,0.432 C1060.705,1.477 1097.39,3.129 1121.236,5.387 C1161.703,9.219 1208.621,17.821 1235.4,22.304 C1285.855,30.748 1354.351,47.432 1440.886,72.354 L1441.191,104.352 L1.121,104.031 L0.457,34.035 Z">
+          </path>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <section class="py-8 bg-white border-b" id="nosotros">
+    <div class="container-section">
+      <h1 class="title-section">
+        ¿Qué podemos ofrecerte?
+      </h1>
+      <div class="w-full mb-4">
+        <div class="title-border"></div>
+      </div>
+      <div class="flex flex-wrap">
+        <div class="w-5/6 p-6 sm:w-1/2">
+          <h3 class="title-content">
+            Ver contenido en distintos dispositivos
+          </h3>
+          <p class="hidden subtitle-content md:block">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit
+            amet ligula.
+          </p>
+        </div>
+        <div class="w-full p-6 sm:w-1/2">
+          <img class="w-full mx-auto sm:h-64" src="img/principal/undraw_Video_streaming_re_v3qg.svg" alt="">
+        </div>
+      </div>
+      <div class="flex flex-col-reverse flex-wrap sm:flex-row">
+        <div class="w-full p-6 mt-6 sm:w-1/2">
+          <img class="w-5/6 mx-auto sm:h-64" src="img/principal/undraw_subscriptions_re_k7jj.svg" alt="">
+        </div>
+        <div class="w-full p-6 mt-6 sm:w-1/2">
+          <div class="align-middle">
+            <h3 class="title-content">
+              Tener distintos perfiles para una mejor experiencia
+            </h3>
+            <p class="hidden subtitle-content md:block">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit
+              amet ligula.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-8 bg-white border-b" id="verPelicula">
+    <div class="container-section">
+      <h1 class="title-section">
+        Busca tu película o serie preferida justo ahora
+      </h1>
+      <div class="w-full mb-4">
+        <div class="title-border"></div>
+      </div>
+      <div
+        class="flex flex-col items-center w-full mb-16 text-center md:flex-row lg:flex-grow md:items-start md:text-left md:mb-0">
+        <div class="flex content-center pt-2 mx-auto text-gray-600">
+          <div class="box-material-design">
+            <input id="search" type="search" name="search" class="input-material-design" />
+            <label for="search" class="label-material-design">
+              Título de película/serie
+            </label>
+          </div>
+          <div class="mx-auto">
+            <button class="button-outline-danger" id="buscadorPeli">Buscar <i class="pl-2 fas fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+      <!-- Tarjeta de la Película -->
+      <div id="contentMovie"></div>
+      <!-- Alerta de error -->
+      <div id="alertError"></div>
+    </div>
+  </section>
+  <section class="max-w-5xl py-10 mx-auto" id="procedimiento">
+    <h1 class="title-section">
+      Pasos a seguir
+    </h1>
+    <div class="w-full mb-4">
+      <div class="w-64 h-1 py-0 mx-auto my-0 bg-white rounded-t"></div>
+    </div>
+    <div class="px-10">
+      <div class="flex flex-row">
+        <div class="box-flex">
+          <div class="box-flex-right">
+            <div class="step-title">Paso 1</div>
+            <i class="text-4xl text-gray-900 far fa-thumbs-up"></i>
+          </div>
+          <div class="box-border-left">
+            <div class="h-full mr-4 border-l-4 border-gray-300 border-dashed"></div>
+          </div>
+        </div>
+        <div class="box-border">
+          <div class="box-items">
+            <div class="flex-auto">
+              <div class="step-title-responsive"><span class="font-black">Paso 1</span> <i
+                  class="text-sm text-gray-900 far fa-thumbs-up"></i></div>
+              <div class="step-subtitle">Registrate con nosotros</div>
+              <div class="hidden step-lorem md:block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+                facilis, voluptates error alias dolorem praesentium sit soluta iure incidunt labore explicabo eaque,
+                quia architecto veritatis dolores, enim consequatur nihil ipsum.</div>
+            </div>
+            <div class="step-img"><img src="img/pasos/register.svg" alt="Paso 1" class="object-scale-down"></div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row items-start">
+        <div class="border-t-4 border-r-4 border-transparent">
+          <div class="w-16 h-16 ml-16 border-b-4 border-l-4 border-gray-100 border-dashed rounded-bl-full"></div>
+        </div>
+        <div class="flex-auto border-t-4 border-transparent">
+          <div class="h-16 border-b-4 border-gray-100 border-dashed"></div>
+        </div>
+        <div class="w-16 h-16 mt-16 mr-16 border-t-4 border-r-4 border-gray-100 border-dashed rounded-tr-full"></div>
+      </div>
+      <div class="flex flex-row-reverse">
+        <div class="box-flex">
+          <div class="box-flex-left">
+            <div class="step-title">Paso 2</div>
+            <i class="text-4xl text-gray-900 far fa-heart"></i>
+          </div>
+          <div class="box-border-right">
+            <div class="h-full ml-4 border-l-4 border-gray-100 border-dashed"></div>
+          </div>
+        </div>
+        <div class="box-border">
+          <div class="box-items">
+            <div class="flex-auto">
+              <div class="step-title-responsive"><span class="font-black">Paso 2</span> <i
+                  class="text-sm text-gray-900 far fa-heart"></i></div>
+              <div class="step-subtitle">Elige uno de nuestros planes</div>
+              <div class="hidden step-lorem md:block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+                facilis, voluptates error alias dolorem praesentium sit soluta iure incidunt labore explicabo eaque,
+                quia architecto veritatis dolores, enim consequatur nihil ipsum.</div>
+            </div>
+            <div class="step-img"><img src="img/pasos/subscription.svg" alt="Paso 2" class="object-scale-down"></div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row-reverse items-start">
+        <div class="border-t-4 border-l-4 border-transparent">
+          <div class="w-16 h-16 mr-16 border-b-4 border-r-4 border-gray-100 border-dashed rounded-br-full"></div>
+        </div>
+        <div class="flex-auto border-t-4 border-transparent">
+          <div class="h-16 border-b-4 border-gray-100 border-dashed"></div>
+        </div>
+        <div class="w-16 h-16 mt-16 ml-16 border-t-4 border-l-4 border-gray-100 border-dashed rounded-tl-full"></div>
+      </div>
+      <div class="flex flex-row">
+        <div class="box-flex">
+          <div class="box-flex-right">
+            <div class="step-title">Paso 3</div>
+            <i class="text-4xl text-gray-900 far fa-credit-card"></i>
+          </div>
+          <div class="box-border-left">
+            <div class="h-full mr-4 border-l-4 border-gray-100 border-dashed"></div>
+          </div>
+        </div>
+        <div class="box-border">
+          <div class="box-items">
+            <div class="flex-auto">
+              <div class="step-title-responsive"><span class="font-black">Paso 3</span> <i
+                  class="text-sm text-gray-900 far fa-credit-card"></i></div>
+              <div class="step-subtitle">Elige la forma de pago</div>
+              <div class="hidden step-lorem md:block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+                facilis, voluptates error alias dolorem praesentium sit soluta iure incidunt labore explicabo eaque,
+                quia architecto veritatis dolores, enim consequatur nihil ipsum.</div>
+            </div>
+            <div class="step-img"><img src="img/pasos/debit-card.svg" alt="Paso 3" class="object-scale-down"></div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row items-start">
+        <div class="border-t-4 border-r-4 border-transparent">
+          <div class="w-16 h-16 ml-16 border-b-4 border-l-4 border-gray-100 border-dashed rounded-bl-full"></div>
+        </div>
+        <div class="box-border-top">
+          <div class="h-16 border-b-4 border-gray-100 border-dashed"></div>
+        </div>
+        <div class="w-16 h-16 mt-16 mr-16 border-t-4 border-r-4 border-gray-100 border-dashed rounded-tr-full"></div>
+      </div>
+      <div class="flex flex-row-reverse">
+        <div class="box-flex">
+          <div class="box-flex-left">
+            <div class="step-title">Paso 4</div>
+            <i class="text-4xl text-gray-900 far fa-grin-wink"></i>
+          </div>
+        </div>
+        <div class="box-border">
+          <div class="box-items">
+            <div class="flex-auto">
+              <div class="step-title-responsive"><span class="font-black">Paso 4</span> <i
+                  class="text-sm text-gray-900 far fa-grin-wink"></i></div>
+              <div class="step-subtitle">Disfruta nuestro contenido</div>
+              <div class="hidden step-lorem md:block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+                facilis, voluptates error alias dolorem praesentium sit soluta iure incidunt labore explicabo eaque,
+                quia architecto veritatis dolores, enim consequatur nihil ipsum.</div>
+            </div>
+            <div class="step-img"><img src="img/pasos/popcorn.svg" alt="Paso 4" class="object-scale-down"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-8 bg-white border-b" id="contenido">
+    <div id="contenidoDisponible"></div>
+    <div class="container flex flex-wrap pt-4 pb-12 mx-auto">
+      <h1 class="title-section">
+        Nuestro contenido incluye
+      </h1>
+      <div class="w-full mb-4">
+        <div class="title-border"></div>
+      </div>
+      <div class="lightbox-flex">
+        <div class="lightbox-shadow">
+          <p class="lightbox-cursor">
+            <img class="w-full imagenContenido" src="img/cards/documentales.jpg" alt="">
+            <div class="lightbox-title">
+              Documentales
+            </div>
+            <p class="hidden lightbox-lorem md:block">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit
+              amet ligula.
+            </p>
+          </p>
+        </div>
+        <div class="box-overflow-flexnone">
+          <div class="flex-items-center">
+            <button class="margin-box button-outline-danger">
+              Ver más
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="lightbox-flex">
+        <div class="lightbox-shadow">
+          <p class="lightbox-cursor">
+            <img class="w-full imagenContenido" src="img/cards/peliculas.jpg" alt="">
+            <div class="lightbox-title">
+              Peliculas
+            </div>
+            <p class="hidden lightbox-lorem md:block">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit
+              amet ligula.
+            </p>
+          </p>
+        </div>
+        <div class="box-overflow-flexnone">
+          <div class="flex-items-center">
+            <button class="margin-box button-outline-danger">
+              Ver más
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="lightbox-flex">
+        <div class="lightbox-shadow">
+          <p class="lightbox-cursor">
+            <img class="w-full imagenContenido" src="img/cards/series.jpg" alt="">
+            <div class="lightbox-title">
+              Series
+            </div>
+            <p class="hidden lightbox-lorem md:block">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit
+              amet ligula.
+            </p>
+          </p>
+        </div>
+        <div class="box-overflow-flexnone">
+          <div class="flex-items-center">
+            <button class="margin-box button-outline-danger">
+              Ver más
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-8 bg-gray-100" id="planes">
+    <div class="container px-2 pt-4 pb-12 mx-auto text-gray-800">
+      <h1 class="title-section">
+        Elige un plan
+      </h1>
+      <div class="w-full mb-4">
+        <div class="title-border"></div>
+      </div>
+      <div class="flex flex-col justify-center pt-12 my-12 sm:flex-row sm:my-4">
+        <div class="box-plan-flex">
+          <div class="box-plan-shadow">
+            <div class="box-plan-name">
+              Amigos
+            </div>
+            <ul class="box-plan-width">
+              <li class="box-plan-items">Thing</li>
+              <li class="box-plan-items">Thing</li>
+              <li class="box-plan-items">Thing</li>
+            </ul>
+          </div>
+          <div class="box-overflow-flexnone">
+            <div class="box-plan-price">
+              $300
+              <span class="text-base">/ por mes</span>
+            </div>
+            <div class="flex-items-center">
+              <button class="margin-box button-outline-danger">
+                Adquirir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="z-10 flex flex-col w-5/6 mx-auto mt-4 bg-white rounded-lg shadow-lg lg:w-1/3 lg:mx-0 sm:-mt-6">
+          <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow">
+            <div class="w-full p-8 text-3xl font-bold text-center">Básico</div>
+            <div class="w-full h-1 py-0 my-0 rounded-t gradient"></div>
+            <ul class="w-full text-base font-bold text-center">
+              <li class="box-plan-items">Thing</li>
+              <li class="box-plan-items">Thing</li>
+              <li class="box-plan-items">Thing</li>
+              <li class="box-plan-items">Thing</li>
+            </ul>
+          </div>
+          <div class="box-overflow-flexnone">
+            <div class="w-full pt-6 text-4xl font-bold text-center">
+              $100
+              <span class="text-base">/ por mes</span>
+            </div>
+            <div class="flex-items-center">
+              <button class="margin-box button-outline-danger">
+                Adquirir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="box-plan-flex">
+          <div class="box-plan-shadow">
+            <div class="box-plan-name">
+              Premium
+            </div>
+            <ul class="box-plan-width">
+              <li class="box-plan-items">Thing</li>
+              <li class="box-plan-items">Thing</li>
+              <li class="box-plan-items">Thing</li>
+            </ul>
+          </div>
+          <div class="box-overflow-flexnone">
+            <div class="box-plan-price">
+              $500
+              <span class="text-base">/ por mes</span>
+            </div>
+            <div class="flex-items-center">
+              <button class="margin-box button-outline-danger">
+                Adquirir
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-8 bg-white" id="promociones">
+    <div class="container flex flex-wrap pt-4 pb-12 mx-auto">
+      <h1 class="title-section">
+        ¿Te parecieron altos los precios?
+      </h1>
+      <div class="w-full mb-4">
+        <div class="title-border"></div>
+      </div>
+      <section class="flex flex-col items-center text-gray-700 bg-white body-font md:flex-row">
+        <div
+          class="flex flex-col items-center mb-4 text-center lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 md:items-start md:text-left md:mb-0">
+          <h1 class="mb-4 text-3xl font-medium text-gray-900 title-font sm:text-4xl">Puedes suscribirte y enterarte de
+            nuestras promociones</h1>
+          <p class="hidden mb-8 leading-relaxed lg:block">Queremos que disfrutes de nuestro contenido así que puedes
+            enterarte de nuestras promociones en suscripciones para que puedas ser parte de nuestra comunidad de
+            cinéfilos</p>
+          <div class="flex content-center pt-2 mx-auto text-gray-600">
+            <div class="box-material-design">
+              <input id="subscribe" type="email" name="subscribe" class="input-material-design" />
+              <label for="subscribe" class="label-material-design">
+                Correo electrónico
+              </label>
+
+            </div>
+            <div class="mx-auto">
+              <button class="button-outline-danger">Suscribirme <i class="pl-2 far fa-heart"></i></button>
+            </div>
+          </div>
+          <div class="flex flex-row items-center justify-center w-full">
+            <a
+              class="inline-flex items-center justify-center w-16 h-16 p-3 mx-2 text-center text-green-600 bg-white rounded-full shadow-lg">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a
+              class="inline-flex items-center justify-center w-16 h-16 p-3 mx-2 text-center text-blue-900 bg-white rounded-full shadow-lg">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a
+              class="inline-flex items-center justify-center w-16 h-16 p-3 mx-2 text-center text-blue-300 bg-white rounded-full shadow-lg">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a
+              class="inline-flex items-center justify-center w-16 h-16 p-3 mx-2 text-center text-red-500 bg-white rounded-full shadow-lg">
+              <i class="fab fa-youtube"></i>
+            </a>
+
+          </div>
+        </div>
+        <div class="w-5/6 px-5 md:w-1/2 lg:px-0">
+          <img class="object-cover object-center rounded-t-lg rounded-b-lg" alt="promocion"
+            src="img/promocion/360_F_306403920_GJADhn7mtEbbvPUbgDPmdJ97fF1CTHHa.jpg">
+        </div>
+      </section>
+    </div>
+  </section>
+  <svg class="wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g transform="translate(-1.000000, -14.000000)" fill-rule="nonzero">
+        <g class="wave" fill="#FFFFFF">
+          <path
+            d="M1440,84 C1383.555,64.3 1342.555,51.3 1317,45 C1259.5,30.824 1206.707,25.526 1169,22 C1129.711,18.326 1044.426,18.475 980,22 C954.25,23.409 922.25,26.742 884,32 C845.122,37.787 818.455,42.121 804,45 C776.833,50.41 728.136,61.77 713,65 C660.023,76.309 621.544,87.729 584,94 C517.525,105.104 484.525,106.438 429,108 C379.49,106.484 342.823,104.484 319,102 C278.571,97.783 231.737,88.736 205,84 C154.629,75.076 86.296,57.743 0,32 L0,0 L1440,0 L1440,84 Z">
+          </path>
+        </g>
+        <g transform="translate(1.000000, 15.000000)" fill="#FFFFFF">
+          <g transform="translate(719.500000, 68.500000) rotate(-180.000000) translate(-719.500000, -68.500000) ">
+            <path
+              d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496"
+              opacity="0.100000001"></path>
+            <path
+              d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z"
+              opacity="0.100000001"></path>
+            <path
+              d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z"
+              opacity="0.200000003"></path>
+          </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+  <section class="container py-6 mx-auto mb-12 text-center">
+    <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
+      No te vayas sin ver nuestros estrenos
+    </h1>
+    <div class="w-full mb-4">
+      <div class="w-1/6 h-1 py-0 mx-auto my-0 bg-white rounded-t opacity-25"></div>
+    </div>
+    <h3 class="hidden my-4 text-3xl leading-tight md:block">
+      Puedes consultar nuestros estrenos
+    </h3>
+    <button class="margin-box button-primary">
+      ¡Vamos allá!
+    </button>
+  </section>
+  <!--Footer-->
+  <footer class="bg-white">
+    <div class="container px-8 mx-auto">
+      <div class="flex flex-col w-full py-6 md:flex-row">
+        <div class="flex-1 pr-10 mb-6 text-black">
+          <a class="text-2xl font-bold text-red-500 no-underline volver-arriba hover:no-underline lg:text-3xl lg:inline"
+            href="#">
+            <span class="font-normal"><i class="inline h-8 fill-current fas fa-film"></i> Share</span> Movie
+          </a>
+        </div>
+        <div class="flex-1">
+          <p class="footer-title">Links</p>
+          <ul class="footer-list-margin">
+            <li class="footer-li">
+              <a href="#" class="footer-items">FAQ</a>
+            </li>
+            <li class="footer-li">
+              <a href="#" class="footer-items">Ayuda</a>
+            </li>
+            <li class="footer-li">
+              <a href="#" class="footer-items">Soporte</a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex-1">
+          <p class="footer-title">Legal</p>
+          <ul class="footer-list-margin">
+            <li class="footer-li">
+              <a href="#" class="footer-items">Términos</a>
+            </li>
+            <li class="footer-li">
+              <a href="#" class="footer-items">Privacidad</a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex-1">
+          <p class="footer-title">Social</p>
+          <ul class="footer-list-margin">
+            <li class="footer-li">
+              <a href="#" class="footer-items">Facebook</a>
+            </li>
+            <li class="footer-li">
+              <a href="#" class="footer-items">Linkedin</a>
+            </li>
+            <li class="footer-li">
+              <a href="#" class="footer-items">Twitter</a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex-1">
+          <p class="footer-title">Compañia</p>
+          <ul class="footer-list-margin">
+            <li class="footer-li">
+              <a href="#" class="footer-items">Blog</a>
+            </li>
+            <li class="footer-li">
+              <a href="#" class="footer-items">Sobre Nosotros</a>
+            </li>
+            <li class="footer-li">
+              <a href="#" class="footer-items">Contacto</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/lightbox.js"></script>
+  <script src="js/apiMovie.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/inputs.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/toggleDropdown.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/formLogin.js"></script>
+</body>
+
+</html>

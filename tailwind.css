@@ -1,0 +1,289 @@
+/* ./your-css-folder/styles.css */
+@tailwind base;
+@tailwind components;
+
+@font-face{
+  font-family: "Noto Sans";
+  src: url("fonts/NotoSansJP.otf");
+}
+
+@font-face{
+  font-family: "Rubik";
+  src: url("fonts/Rubik.ttf");
+}
+
+body{
+  font-family: "Noto Sans", sans-serif;
+}
+
+.font-bold{
+  font-family: "Rubik", sans-serif;
+}
+
+.title-section{
+  @apply w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800
+}
+.container-section{
+  @apply container max-w-5xl m-8 mx-auto
+}
+
+.title-border{
+  @apply w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient
+}
+
+.title-content{
+  @apply mb-3 text-3xl font-bold leading-none text-gray-800
+}
+
+.subtitle-content{
+  @apply mb-8 text-gray-600
+}
+
+.box-flex{
+  @apply flex-col items-center hidden md:flex
+}
+
+.box-flex-right{
+  @apply flex flex-col items-center justify-center w-32 py-5 mr-4 uppercase border border-gray-100 rounded
+}
+
+.box-flex-left{
+  @apply flex flex-col items-center justify-center w-32 py-5 ml-4 uppercase border border-gray-100 rounded
+}
+
+.box-border-left{
+  @apply h-full border-l-4 border-transparent
+}
+
+.box-border-right{
+  @apply h-full border-r-4 border-transparent
+}
+
+.box-border-top{
+  @apply flex-auto border-t-4 border-transparent
+}
+
+.box-border{
+  @apply flex-auto border border-gray-100 rounded
+}
+
+.box-items{
+  @apply flex flex-col items-center md:flex-row
+}
+
+.step-title{
+  @apply text-3xl font-black text-gray-900
+}
+
+.step-title-responsive{
+  @apply pt-3 pl-3 text-sm font-normal text-gray-900 uppercase md:hidden
+}
+
+.step-subtitle{
+  @apply p-3 text-3xl font-medium text-gray-900
+}
+
+.step-lorem{
+  @apply px-3 pb-6
+}
+
+.step-img{
+  @apply w-full p-5 md:w-96
+}
+
+.lightbox-flex{
+  @apply flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3
+}
+.lightbox-shadow{
+  @apply flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow
+}
+.lightbox-cursor{
+  @apply flex flex-wrap no-underline cursor-pointer hover:no-underline
+}
+.lightbox-title{
+  @apply w-full px-6 text-2xl font-bold text-center text-gray-800
+}
+.lightbox-lorem{
+  @apply px-6 mb-5 text-base text-center text-gray-400
+}
+.box-overflow-flexnone{
+  @apply flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow
+}
+.flex-items-center{
+  @apply flex items-center justify-center
+}
+.margin-box{
+  @apply mx-auto my-6
+}
+
+
+.box-plan-flex{
+  @apply flex flex-col w-5/6 mx-auto mt-4 bg-white rounded-none lg:w-1/4 lg:mx-0 lg:rounded-l-lg
+}
+.box-plan-shadow{
+  @apply flex-1 overflow-hidden text-gray-600 bg-white rounded-t rounded-b-none shadow
+}
+.box-plan-name{
+  @apply p-8 text-3xl font-bold text-center border-b-4
+}
+.box-plan-price{
+  @apply w-full pt-6 text-3xl font-bold text-center text-gray-600
+}
+.box-plan-width{
+  @apply w-full text-sm text-center
+}
+.box-plan-items{
+  @apply py-4 border-b
+}
+.color-rgba{
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal{
+  @apply fixed w-full h-screen top-0 left-0 color-rgba z-50 flex justify-center items-center
+}
+
+.modal img{
+  @apply w-auto h-auto md:w-4/5 md:h-4/5
+}
+
+.modal .btn-cerrar{
+  @apply fixed w-12 h-12 top-5 right-5 bg-red-500 cursor-pointer flex justify-center items-center
+}
+.modal .btn-cerrar i{
+  @apply text-white text-center
+}
+
+.button-danger{
+  @apply inline-flex items-center px-6 py-2 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white border-b-2 border-red-500 rounded shadow-lg lg:mx-0 focus:outline-none hover:scale-105 hover:border-red-600 hover:bg-red-500 hover:text-white;
+}
+
+.button-outline-danger{
+  @apply inline-flex items-center px-6 py-2 font-bold text-white transition duration-300 ease-in-out transform bg-red-500 border-b-2 border-white rounded shadow-lg lg:mx-0 focus:outline-none hover:scale-105 hover:border-white hover:bg-red-500 hover:text-white;
+}
+
+.button-success{
+  @apply inline-flex items-center px-6 py-2 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white border-b-2 border-green-500 rounded shadow-lg lg:mx-0 focus:outline-none hover:scale-105 hover:border-green-600 hover:bg-green-500 hover:text-white;
+}
+
+.button-warning {
+  @apply inline-flex items-center px-6 py-2 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white border-b-2 border-yellow-500 rounded shadow-lg lg:mx-0 focus:outline-none hover:scale-105 hover:border-yellow-600 hover:bg-yellow-500 hover:text-white;
+}
+
+.button-primary {
+  @apply inline-flex items-center px-6 py-2 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white border-b-2 border-blue-800 rounded shadow-lg lg:mx-0 focus:outline-none hover:scale-105 hover:border-blue-900 hover:bg-blue-800 hover:text-white;
+}
+
+.button-outline-primary {
+  @apply inline-flex items-center px-6 py-2 font-bold text-white transition duration-300 ease-in-out transform bg-blue-800 border-b-2 border-white rounded shadow-lg lg:mx-0 focus:outline-none hover:scale-105 hover:border-white hover:bg-blue-800 hover:text-white;
+}
+
+.button-dark{
+  @apply inline-flex items-center px-6 py-2 font-bold text-white transition duration-300 ease-in-out transform bg-gray-800 border-b-2 border-white rounded shadow-lg lg:mx-0 focus:outline-none hover:scale-105 hover:border-gray-800 hover:bg-white hover:text-gray-800;
+}
+label {
+  top: 0%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  color: #f05133;
+}
+.empty input:not(:focus) + label {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+}
+input:not(:focus) + label {
+  color: rgba(70, 70, 70, 1);
+}
+input {
+  border-width: 1px;
+}
+input:focus {
+  outline: none;
+  border-color: #f05133;
+}
+.input-material-design{
+  @apply w-full h-full px-2 text-gray-700 transition-all border border-gray-300 rounded-sm shadow appearance-none focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent
+}
+.label-material-design{
+  @apply absolute px-1 transition-all bg-white left-2
+}
+.box-material-design{
+  @apply relative h-10 mb-5
+}
+
+.footer-title{
+  @apply text-gray-500 uppercase md:mb-6
+}
+.footer-li{
+  @apply inline-block mt-2 mr-2 md:block md:mr-0
+}
+
+.footer-items{
+  @apply text-gray-800 no-underline hover:underline hover:text-pink-500
+}
+.footer-list-margin{
+  @apply mb-6
+}
+
+.gradient {
+  background: linear-gradient(90deg, #f05133 0%, #e34234 100%)
+}
+.menu-icon {
+  display: grid;
+  place-items: center;
+  height: 55px;
+  width: 50px;
+  position: relative;
+  cursor: pointer;
+}
+.menu-icon > span {
+  width: 50px;
+  height: 3px;
+  display: block;
+  transition: all 0.3s ease-in-out;
+}
+.menu-icon:hover span:nth-child(1) {
+  width: 35px;
+}
+.menu-icon:hover span:nth-child(2) {
+  width: 40px;
+}
+.menu-icon.active span:nth-child(1) {
+  transform-origin: center center;
+  transform: rotate(-45deg) translate(-12px, 12px);
+  width: 55px;
+}
+.menu-icon.active span:nth-child(2) {
+  transform: translateX(10px);
+  opacity: 0;
+}
+.menu-icon.active span:nth-child(3) {
+  transform-origin: center center;
+  transform: rotate(45deg) translate(-15px, -14px);
+  width: 55px;
+}
+.menu-icon .line-1 {
+  width: 42px;
+  justify-self: end;
+}
+.menu-icon .line-2 {
+  width: 35px;
+  justify-self: end;
+}
+
+@tailwind utilities;
+
+/* 
+Es necesario compilar en la consola el siguiente comando:
+npx tailwindcss-cli@latest build tailwind.css -o public/style.css
+
+Para una mejor compilación se recomienda que en el archivo "package.json" se agrega el comando en la
+parte de "scripts", donde se agregue un nuevo comando, en este caso será "buildtw", con esto unicamente
+se debe escribir en la consola: "npm run buildtw"
+
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "buildtw": "npx tailwindcss-cli@latest build tailwind.css -o public/style.css"
+  }
+*/
